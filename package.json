@@ -1,0 +1,23 @@
+{
+  "name": "plate-minder",
+  "version": "0.0.0",
+  "description": "Processes an RTSP stream for license plates and stores them.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "buildImage": "docker build -t 'sclaflin/plate-minder' .",
+    "start": "node index.js"
+  },
+  "author": "Sean Claflin",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^3.1.0",
+    "sqlite": "^4.0.23",
+    "sqlite3": "^5.0.2",
+    "yaml": "^1.10.2"
+  },
+  "directories": {
+    "lib": "lib"
+  }
+}
