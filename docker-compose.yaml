@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  plate-minder:
+    container_name: plate-minder
+    restart: unless-stopped
+    image: sclaflin/plate-minder:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/app/data
+      - ./config.yaml:/app/config.yaml
+  open-alpr-http-wrapper:
+    container_name: open-alpr-http-wrapper
+    restart: unless-stopped
+    image: sclaflin/open-alpr-http-wrapper:latest

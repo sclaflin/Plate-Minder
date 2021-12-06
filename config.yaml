@@ -1,0 +1,18 @@
+mjpeg:
+  # How often an image should be captured
+  captureInterval: 0.5
+
+  # Have an RTSP stream? Uncomment and enter the URL for your RTSP camera.
+  # type: 'rtsp'
+  # url: 'rtsp://<your camera>'
+
+  # Have a video file you want to process? Uncomment and enter the path of your video
+  # type: 'file'
+  # file: './<path to your video file>'
+  
+alpr:
+  # Path to ALPRToHTTP server
+  url: 'http://open-alpr-http-wrapper:3000/detect'
+
+recorder:
+  - type: 'sqlite'
