@@ -9,15 +9,10 @@ import PlateMinder from './lib/PlateMinder.js';
 	);
 
 	PlateMinder.fromObject({
-		rtspToAlpr: {
-			rtsp: {
-				url: config.rtsp.url,
-				captureInterval: config.rtsp.captureInterval
-			},
+		mjpegToAlpr: {
+			mjpegReadable: config.mjpeg,
 			mjpegToJpeg: {},
-			alpr: {
-				url: config.alpr.url
-			}
+			alpr: config.alpr
 		},
 		recorders: config.recorder
 	});
