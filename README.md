@@ -34,7 +34,6 @@ services:
     container_name: open-alpr-http-wrapper
     restart: unless-stopped
     image: sclaflin/open-alpr-http-wrapper:latest
-
 ```
 
 config.yaml:
@@ -50,11 +49,11 @@ mjpeg:
 
   # Have a video file you want to process? Uncomment and enter the path of your video
   # type: 'file'
-  # file: './videos/lpr.20211205_160218_1.mp4'
+  # file: './<path to your video file>'
   
 alpr:
   # Path to ALPRToHTTP server
-  url: 'http://192.168.0.42:3000/detect'
+  url: 'http://open-alpr-http-wrapper:3000/detect'
 
 recorder:
   # Type of recorder. Currently sqlite is only supported.
