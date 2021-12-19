@@ -11,12 +11,35 @@ Short term goals:
  * Provide better support for hardware accelleration
  * Provide MQTT support for recording found plates
 
-## Installation ##
+ ## Components ##
 
-A docker image is available via:
-```bash
-docker pull sclaflin/plate-minder:latest
+ Plate minder consists of extensible and loosely coupled components.
+
+```mermaid
+flowchart LR
+
+MJPEGReadable --> MJPEGToJPEG
+MJPEGToJPEG --> ImageFilter
+ImageFilter --> OpenALPRDetect
+OpenALPRDetect --> PlateRecorder
 ```
+
+`MJPEGReadable` converts a video source to MJPEG. 
+- `RTSPMJPEGReadable` converts an RTSP stream into an MJPEG stream.
+- `FileMJPEGReadable` converts a video file from disk into an MJPEG stream.
+
+`MJPEGToJPEG` extracts JPEG images from an MJPEG stream.
+
+`ImageFilter` performs pre-processing of images.
+- `MaskImageFilter` masks out polygon shapes from an image.
+- `MotionImageFilter` crops an image to the largest area of detected motion.
+
+`OpenALPRDetect` sends JPEG images to an open-alpr-http-wrapper service and captures detected license plate information.
+
+`PlateRecorder` stores/transmits captured license plate information.
+- `SQLitePlateRecorder` stores captured license plate data in a SQLite database.
+
+## Installation ##
 
 Docker Compose:
 
@@ -39,29 +62,42 @@ services:
 config.yaml:
 
 ```yaml
-mjpeg:
-  # How often an image should be captured
-  captureInterval: 0.5
+capture:
+  # How often an image should be captured. 
+  # Increments are in seconds. Fractional values can be used for sub-second capturing.
+  captureInterval: 1
 
   # Have an RTSP stream? Uncomment and enter the URL for your RTSP camera.
-  # type: 'rtsp'
+  # type: rtsp
   # url: 'rtsp://<your camera>'
 
   # Have a video file you want to process? Uncomment and enter the path of your video
-  # type: 'file'
-  # file: './<path to your video file>'
-  
-alpr:
-  # Path to ALPRToHTTP server
-  url: 'http://open-alpr-http-wrapper:3000/detect'
+  # type: file
+  # file: ./<path to your video file>
 
-recorder:
-  # Type of recorder. Currently sqlite is only supported.
-  - type: 'sqlite'
+# Filter jpeg frames. Currently 'motion' and 'mask' filters are available.
+# Filters are processed in the order they are defined
+filters:
+  # Masks out a portion of the frame. Note that any pixels within the mask
+  # cannot be used for detection.
+  - type: mask
+    shapes:
+      # Shapes are a series of x/y coordinates
+      - 1267,0,1920,0,1920,100,1267,100 # Timestamp, top right
+  # Crops the frame down to the largest area of motion detection
+  - type: motion
+  
+openALPR:
+  # Path to ALPRToHTTP server
+  url: http://open-alpr-http-wrapper:3000/detect
+
+# Record detected license plate information
+recorders:
+  # Output to a SQLite database
+  - type: sqlite
+    path: ./data
 ```
 
 ## Usage ##
 
 Open the database for reading. ;-)
-
-Pre-compiled ffmpeg binary provided by: https://johnvansickle.com/ffmpeg/

@@ -1,0 +1,11 @@
+{
+  "name": "opencv",
+  "version": "4.5.4",
+  "description": "opencv.js downloaded from https://docs.opencv.org/4.5.4/opencv.js",
+  "main": "opencv.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

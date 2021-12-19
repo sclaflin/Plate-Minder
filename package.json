@@ -11,13 +11,15 @@
   },
   "author": "Sean Claflin",
   "license": "MIT",
+  "directories": {
+    "lib": "lib"
+  },
   "dependencies": {
+    "ffmpeg-static": "^4.4.0",
     "node-fetch": "^3.1.0",
+    "sharp": "^0.29.3",
     "sqlite": "^4.0.23",
     "sqlite3": "^5.0.2",
     "yaml": "^1.10.2"
-  },
-  "directories": {
-    "lib": "lib"
   }
 }

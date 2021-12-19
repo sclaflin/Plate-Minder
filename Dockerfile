@@ -8,7 +8,12 @@ ENV SHELL /bin/bash
 # Install some binaries
 RUN apt update \
     && apt upgrade -y \
-    && apt install -y wget gpg apt-transport-https sqlite \
+    && DEBIAN_FRONTEND="noninteractive" \
+        apt install -y \
+        wget \
+        gpg \
+        apt-transport-https \
+        sqlite \
     && rm -rf /var/lib/apt/lists/*
 
 # Set up nodesource repo & install nodejs
@@ -29,14 +34,14 @@ RUN useradd -m app
 USER app
 
 # Copy application files over
-COPY index.js /app/
-COPY package*.json /app/
-COPY lib /app/lib
-COPY data/placeholder /app/data/placeholder
-COPY migrations /app/migrations
-COPY ffmpeg /app/ffmpeg
-COPY node_modules /app/node_modules
+COPY --chown=app:app index.js /app/
+COPY --chown=app:app package*.json /app/
+COPY --chown=app:app lib /app/lib
+COPY --chown=app:app data/placeholder /app/data/placeholder
+COPY --chown=app:app migrations /app/migrations
 
 WORKDIR /app
+
+RUN npm ci
 
 CMD ["/usr/bin/npm", "start"]
