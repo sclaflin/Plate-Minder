@@ -189,4 +189,4 @@ camera:
     topic: plate-minder/image
 ```
 Picture entity card & entities card examples:
-![GitHub Logo](/images/home_assistant.png)
+![Home Assistant Example](/images/home_assistant.png)
