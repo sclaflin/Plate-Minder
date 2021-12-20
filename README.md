@@ -41,6 +41,7 @@ OpenALPRDetect --> PlateRecorder
 
 `PlateRecorder` stores/transmits captured license plate information.
 - `SQLitePlateRecorder` stores captured license plate data in a SQLite database.
+- `MQTTPlateRecorder` sends captured license plate date to an MQTT broker.
 
 ## Installation ##
 
@@ -113,4 +114,79 @@ recorders:
 
 ## Usage ##
 
-Open the database for reading. ;-)
+### SQLite ###
+
+Enabling the sqlite recorder will save the detected plate information into a SQLite database file (`./data/database.db`).
+Reporting & analytics queries can be run against it.
+
+
+### MQTT ###
+
+Enabling the MQTT recorder will publish detected plate information to the `plate-minder` base topic. The following subtopics are available:
+
+`plate-minder/detect` contains a JSON string containing the most recent detection info:
+
+```json
+{
+  "epoch_time": 1640031280937,
+  "results": [
+    {
+      "plate": "ABC123",
+      "confidence": 89.232658,
+      "matches_template": 0,
+      "plate_index": 0,
+      "region": "",
+      "region_confidence": 0,
+      "processing_time_ms": 18.699596,
+      "requested_topn": 10,
+      "coordinates": [
+        {
+          "x": 510,
+          "y": 516
+        },
+        {
+          "x": 698,
+          "y": 516
+        },
+        {
+          "x": 698,
+          "y": 611
+        },
+        {
+          "x": 508,
+          "y": 611
+        }
+      ],
+      "candidates": [
+        {
+          "plate": "ABC123",
+          "confidence": 89.232658,
+          "matches_template": 0
+        }
+      ]
+    }
+  ]
+}
+```
+`plate-minder/plate` contains the most recently detected plate number.
+
+`plate-minder/image` contains a JPEG image of the most recently detected plate number.
+
+### Home Assistant ###
+
+Assuming Plate-Minder is sending data to your MQTT broker, adding the following to your `configuration.yaml` will add plate sensor and plate camera to Home Assistant.
+
+```yaml
+sensor:
+  - platform: mqtt
+    name: Plate Number
+    icon: mdi:car
+    state_topic: plate-minder/plate
+
+camera:
+  - platform: mqtt
+    name: Plate Image
+    topic: plate-minder/image
+```
+Picture entity card & entities card examples:
+![GitHub Logo](/images/home_assistant.png)
