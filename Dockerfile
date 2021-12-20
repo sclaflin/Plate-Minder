@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 LABEL description="Connects an RTSP feed to OpenALPR and records captured data"
 LABEL maintainer "seanclaflin@protonmail.com"
@@ -14,12 +14,13 @@ RUN apt update \
         gpg \
         apt-transport-https \
         sqlite \
+        lsb-release \
     && rm -rf /var/lib/apt/lists/*
 
 # Set up nodesource repo & install nodejs
 RUN KEYRING=/usr/share/keyrings/nodesource.gpg \
     && VERSION=node_16.x \
-    && DISTRO=bionic \
+    && DISTRO="$(lsb_release -s -c)" \
     && wget --quiet -O - https://deb.nodesource.com/gpgkey/nodesource.gpg.key | gpg --dearmor | tee "$KEYRING" >/dev/null \
     && echo "deb [signed-by=$KEYRING] https://deb.nodesource.com/$VERSION $DISTRO main" | tee /etc/apt/sources.list.d/nodesource.list \
     && echo "deb-src [signed-by=$KEYRING] https://deb.nodesource.com/$VERSION $DISTRO main" | tee -a /etc/apt/sources.list.d/nodesource.list \
