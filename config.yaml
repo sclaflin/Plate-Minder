@@ -35,3 +35,10 @@ openALPR:
 recorders:
   # Output to a SQLite database to './data'
   - type: sqlite
+  # Output to an MQTT host
+  # - type: mqtt
+  #   url: <URL to your MQTT instance>
+  #   # Connection options can be found here: https://github.com/mqttjs/MQTT.js#client
+  #   mqttOptions:
+  #     username: username
+  #     password: mypassword

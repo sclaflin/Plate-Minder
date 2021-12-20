@@ -11,7 +11,7 @@ This project is a proof of concept.
 Short term goals:
 
  * Provide better support for hardware accelleration
- * Provide MQTT support for recording found plates
+ * ~~Provide MQTT support for recording found plates~~
 
 
  ## Components ##
@@ -102,6 +102,13 @@ openALPR:
 recorders:
   # Output to a SQLite database
   - type: sqlite
+  # Output to an MQTT host
+  # - type: mqtt
+  #   url: <URL to your MQTT instance>
+  #   # Connection options can be found here: https://github.com/mqttjs/MQTT.js#client
+  #   mqttOptions:
+  #     username: username
+  #     password: mypassword
 ```
 
 ## Usage ##
