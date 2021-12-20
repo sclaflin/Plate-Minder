@@ -1,5 +1,7 @@
 # Plate Minder #
 
+[GitHub](https://github.com/sclaflin/Plate-Minder) | [Docker Hub](https://hub.docker.com/r/sclaflin/plate-minder)
+
 Monitor an MJPEG stream for license plates and record them.
 
 Currently RTSP & video files can be converted to an MJPEG stream. See the `config.yaml` example below.
@@ -10,6 +12,7 @@ Short term goals:
 
  * Provide better support for hardware accelleration
  * Provide MQTT support for recording found plates
+
 
  ## Components ##
 
