@@ -81,11 +81,15 @@ filters:
   # Masks out a portion of the frame. Note that any pixels within the mask
   # cannot be used for detection.
   - type: mask
+    # Optional. Outputs an image to the './data' path
+    # debug: true
     shapes:
       # Shapes are a series of x/y coordinates
       - 1267,0,1920,0,1920,100,1267,100 # Timestamp, top right
   # Crops the frame down to the largest area of motion detection
   - type: motion
+    # Optional. Outputs an image to the './data' path
+    # debug: true
   
 openALPR:
   # Path to ALPRToHTTP server
