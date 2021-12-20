@@ -95,7 +95,6 @@ openALPR:
 recorders:
   # Output to a SQLite database
   - type: sqlite
-    path: ./data
 ```
 
 ## Usage ##

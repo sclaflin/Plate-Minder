@@ -29,6 +29,5 @@ openALPR:
 
 # Record detected license plate information
 recorders:
-  # Output to a SQLite database
+  # Output to a SQLite database to './data'
   - type: sqlite
-    path: ./data
