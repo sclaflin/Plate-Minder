@@ -64,7 +64,7 @@ config.yaml:
 ```yaml
 capture:
   # How often an image should be captured. 
-  # Increments are in seconds. Fractional values can be used for sub-second capturing.
+  # Increments are in seconds. Fractional values (i.e. "0.5") can be used for sub-second capturing.
   captureInterval: 1
 
   # Have an RTSP stream? Uncomment and enter the URL for your RTSP camera.
