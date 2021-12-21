@@ -179,14 +179,18 @@ Assuming Plate-Minder is sending data to your MQTT broker, adding the following 
 ```yaml
 sensor:
   - platform: mqtt
-    name: Plate Number
     icon: mdi:car
+    name: Plate Number
     state_topic: plate-minder/plate
+    availability:
+      - topic: plate-minder/available
 
 camera:
   - platform: mqtt
     name: Plate Image
     topic: plate-minder/image
+    availability:
+      - topic: plate-minder/available
 ```
 Picture entity card & entities card examples:
 ![Home Assistant Example](/images/home_assistant.png)
