@@ -12,7 +12,8 @@ Short term goals:
 
  * Provide better support for hardware accelleration
  * ~~Provide MQTT support for recording found plates~~
- * Provide original image and not just the ROI
+ * ~~Provide original image and not just the ROI~~
+ * Draw an ROI box in original image
  * ~~Multiple camera support~~
  * ~~Customizable base topic~~
  * Storage of images where plates have been detected.
@@ -197,6 +198,11 @@ camera:
   - platform: mqtt
     name: Plate Image
     topic: plate-minder/image
+    availability:
+      - topic: plate-minder/available
+  - platform: mqtt
+    name: Plate ROI
+    topic: plate-minder/roi
     availability:
       - topic: plate-minder/available
 ```
