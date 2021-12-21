@@ -13,7 +13,7 @@ Short term goals:
  * Provide better support for hardware accelleration
  * ~~Provide MQTT support for recording found plates~~
  * ~~Provide original image and not just the ROI~~
- * Draw an ROI box in original image
+ * ~~Draw an ROI box in original image~~
  * ~~Multiple camera support~~
  * ~~Customizable base topic~~
  * ~~Use home assistant autodiscovery~~
