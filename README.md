@@ -193,4 +193,22 @@ Assuming Plate-Minder is sending data to your MQTT broker, the following entites
 * `camera.<Source Name>_roi`
 
 Picture entity card & entities card examples:
+
 ![Home Assistant Example](/images/home_assistant.png)
+
+## Thanks ##
+
+This project has been a pleasure to develop due largely to standing on the shoulders of giants.
+
+* [Docker](https://www.docker.com/)
+* [FFMPEG](https://ffmpeg.org/)
+* [ffmpeg-static](https://github.com/eugeneware/ffmpeg-static)
+* [Git](https://git-scm.com/)
+* [MQTT.js](https://github.com/mqttjs)
+* [node.js](https://nodejs.org)
+* [node-sqlite](https://github.com/kriasoft/node-sqlite)
+* [node-sqlite3](https://github.com/mapbox/node-sqlite3/)
+* [npm](https://www.npmjs.com/)
+* [OpenCV](https://opencv.org/)
+* [Sharp](https://github.com/lovell/sharp)
+* [VSCode](https://code.visualstudio.com/)
