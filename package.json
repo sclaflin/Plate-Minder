@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "buildImage": "docker build -t 'sclaflin/plate-minder' .",
-    "start": "node index.js"
+    "start": "node index.js",
+    "lint": "eslint ./lib"
   },
   "author": "Sean Claflin",
   "license": "MIT",
@@ -22,5 +23,8 @@
     "sqlite": "^4.0.23",
     "sqlite3": "^5.0.2",
     "yaml": "^1.10.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.5.0"
   }
 }
