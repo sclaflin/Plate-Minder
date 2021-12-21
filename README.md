@@ -12,6 +12,12 @@ Short term goals:
 
  * Provide better support for hardware accelleration
  * ~~Provide MQTT support for recording found plates~~
+ * Provide original image and not just the ROI
+ * Multiple camera support
+ * Customizable base topic
+ * Storage of images where plates have been detected.
+	* Customizable & tokenized file names.
+ * Web UI for configuration
 
 
  ## Components ##
