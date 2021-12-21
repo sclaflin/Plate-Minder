@@ -23,7 +23,8 @@
 	"settings": {
 		"editor.insertSpaces": false,
 		"editor.tabSize": 4,
-		"editor.detectIndentation": false 
+		"editor.detectIndentation": false,
+		"files.insertFinalNewline": true
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
