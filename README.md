@@ -14,7 +14,7 @@ Short term goals:
  * ~~Provide MQTT support for recording found plates~~
  * Provide original image and not just the ROI
  * ~~Multiple camera support~~
- * Customizable base topic
+ * ~~Customizable base topic~~
  * Storage of images where plates have been detected.
 	* Customizable & tokenized file names.
  * Web UI for configuration
@@ -112,6 +112,8 @@ recorders:
   # Output to an MQTT host
   # - type: mqtt
   #   url: <URL to your MQTT instance>
+  #   # Optional - Default base topic is 'plate-minder'
+  #   baseTopic: plate-minder
   #   # Connection options can be found here: https://github.com/mqttjs/MQTT.js#client
   #   mqttOptions:
   #     username: username

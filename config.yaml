@@ -10,7 +10,7 @@ sources:
   #   file: ./<path to your video file>
   #   captureInterval: 1
 
-# Globall applied filters
+# Globally applied filters
 # Filter jpeg frames. Currently 'motion' and 'mask' filters are available.
 # Filters are processed in the order they are defined
 filters:
@@ -38,6 +38,8 @@ recorders:
   # Output to an MQTT host
   # - type: mqtt
   #   url: <URL to your MQTT instance>
+  #   # Optional - Default base topic is 'plate-minder'
+  #   baseTopic: plate-minder
   #   # Connection options can be found here: https://github.com/mqttjs/MQTT.js#client
   #   mqttOptions:
   #     username: username
