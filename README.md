@@ -16,6 +16,7 @@ Short term goals:
  * Draw an ROI box in original image
  * ~~Multiple camera support~~
  * ~~Customizable base topic~~
+ * ~~Use home assistant autodiscovery~~
  * Storage of images where plates have been detected.
 	* Customizable & tokenized file names.
  * Web UI for configuration
@@ -185,28 +186,11 @@ Enabling the MQTT recorder will publish detected plate information to the `plate
 
 ### Home Assistant ###
 
-Assuming Plate-Minder is sending data to your MQTT broker, adding the following to your `configuration.yaml` will add plate sensor and plate camera to Home Assistant.
+Assuming Plate-Minder is sending data to your MQTT broker, the following entites should be auto-discovered per video source:
 
-```yaml
-sensor:
-  - platform: mqtt
-    icon: mdi:car
-    name: Plate Number
-    state_topic: plate-minder/plate
-    availability:
-      - topic: plate-minder/available
+* `sensor.<Source Name>_plate`
+* `camera.<Source Name>_image`
+* `camera.<Source Name>_roi`
 
-camera:
-  - platform: mqtt
-    name: Plate Image
-    topic: plate-minder/image
-    availability:
-      - topic: plate-minder/available
-  - platform: mqtt
-    name: Plate ROI
-    topic: plate-minder/roi
-    availability:
-      - topic: plate-minder/available
-```
 Picture entity card & entities card examples:
 ![Home Assistant Example](/images/home_assistant.png)
