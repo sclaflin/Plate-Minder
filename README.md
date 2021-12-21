@@ -209,6 +209,7 @@ This project has been a pleasure to develop due largely to standing on the shoul
 * [node-sqlite](https://github.com/kriasoft/node-sqlite)
 * [node-sqlite3](https://github.com/mapbox/node-sqlite3/)
 * [npm](https://www.npmjs.com/)
+* [OpenALPR](https://github.com/openalpr/openalpr)
 * [OpenCV](https://opencv.org/)
 * [Sharp](https://github.com/lovell/sharp)
 * [VSCode](https://code.visualstudio.com/)
