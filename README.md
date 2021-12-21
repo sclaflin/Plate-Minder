@@ -13,7 +13,7 @@ Short term goals:
  * Provide better support for hardware accelleration
  * ~~Provide MQTT support for recording found plates~~
  * Provide original image and not just the ROI
- * Multiple camera support
+ * ~~Multiple camera support~~
  * Customizable base topic
  * Storage of images where plates have been detected.
 	* Customizable & tokenized file names.
@@ -72,19 +72,19 @@ services:
 config.yaml:
 
 ```yaml
-capture:
-  # How often an image should be captured. 
-  # Increments are in seconds. Fractional values (i.e. "0.5") can be used for sub-second capturing.
-  captureInterval: 1
-
+sources:
   # Have an RTSP stream? Uncomment and enter the URL for your RTSP camera.
-  # type: rtsp
-  # url: 'rtsp://<your camera>'
-
+  - type: rtsp
+    url: 'rtsp://rtsp://<your camera>'
+    # How often an image should be captured. 
+    # Increments are in seconds. Fractional values (i.e. "0.5") can be used for sub-second capturing.
+    captureInterval: 1
   # Have a video file you want to process? Uncomment and enter the path of your video
-  # type: file
-  # file: ./<path to your video file>
+  # - type: file
+  #   file: ./<path to your video file>
+  #   captureInterval: 1
 
+# Globall applied filters
 # Filter jpeg frames. Currently 'motion' and 'mask' filters are available.
 # Filters are processed in the order they are defined
 filters:
