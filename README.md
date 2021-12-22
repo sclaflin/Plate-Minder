@@ -64,6 +64,8 @@ services:
     restart: unless-stopped
     image: sclaflin/plate-minder:latest
     volumes:
+	  # Set's the docker container to the host container local time
+	  - /etc/localtime:/etc/localtime:ro
       - ./data:/app/data
       - ./config.yaml:/app/config.yaml
   open-alpr-http-wrapper:
