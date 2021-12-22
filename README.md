@@ -50,6 +50,7 @@ OpenALPRDetect --> PlateRecorder
 `PlateRecorder` stores/transmits captured license plate information.
 - `SQLitePlateRecorder` stores captured license plate data in a SQLite database.
 - `MQTTPlateRecorder` sends captured license plate date to an MQTT broker.
+- `FilePlateRecorder` stores captured license plate images to disk.
 
 ## Installation ##
 
@@ -118,6 +119,9 @@ recorders:
   #   url: <URL to your MQTT instance>
   #   # Optional - Default base topic is 'plate-minder'
   #   baseTopic: plate-minder
+  #   # Optional - Home Assistant Auto Discovery support.
+  #   hassDiscovery:
+  #     discoveryPrefix: homeassistant
   #   # Connection options can be found here: https://github.com/mqttjs/MQTT.js#client
   #   mqttOptions:
   #     username: username
