@@ -49,3 +49,10 @@ recorders:
   #   mqttOptions:
   #     username: username
   #     password: mypassword
+  # Output files to a folder
+  # - type: file
+  #   # Naming pattern of files to store.
+  #   # Tokens ({{DATE}}, {{TIME}}, {{SOURCE}}, and {{PLATE}}) are replaced with dynamic values
+  #   pattern: './data/images/{{DATE}}/{{SOURCE}}/{{TIME}}_{{PLATE}}.jpeg'
+  #   # Files older than retainDays will be removed.
+  #   retainDays: 30

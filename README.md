@@ -17,8 +17,8 @@ Short term goals:
  * ~~Multiple camera support~~
  * ~~Customizable base topic~~
  * ~~Use home assistant autodiscovery~~
- * Storage of images where plates have been detected.
-	* Customizable & tokenized file names.
+ * ~~Storage of images where plates have been detected.~~
+	* ~~Customizable & tokenized file names.~~
  * Web UI for configuration
 
 
@@ -122,6 +122,13 @@ recorders:
   #   mqttOptions:
   #     username: username
   #     password: mypassword
+  # Output files to a folder
+  # - type: file
+  #   # Naming pattern of files to store.
+  #   # Tokens ({{DATE}}, {{TIME}}, {{SOURCE}}, and {{PLATE}}) are replaced with dynamic values
+  #   pattern: './data/images/{{DATE}}/{{SOURCE}}/{{TIME}}_{{PLATE}}.jpeg'
+  #   # Files older than retainDays will be removed.
+  #   retainDays: 30
 ```
 
 ## Usage ##
