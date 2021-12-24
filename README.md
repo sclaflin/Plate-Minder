@@ -69,6 +69,8 @@ services:
     container_name: plate-minder
     restart: unless-stopped
     image: sclaflin/plate-minder:latest
+    ports:
+      - 4000:4000
     volumes:
       # Set's the docker container to the host container local time
       - /etc/localtime:/etc/localtime:ro
