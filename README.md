@@ -24,6 +24,7 @@ Short term goals:
  * ~~Storage of images where plates have been detected.~~
 	* ~~Customizable & tokenized file names.~~
  * Web UI for configuration
+   * ~~Add RESTful API to manage configuration~~
 
 
  ## Components ##
@@ -140,6 +141,14 @@ recorders:
     pattern: './data/images/{{DATE}}/{{SOURCE}}/{{TIME}}_{{PLATE}}.jpeg'
     # Files older than retainDays will be removed.
     retainDays: 30
+
+# RESTful service to alter this yaml file. Please note that this service
+# will end up stripping out the comments.
+restService:
+  # Defaults to true
+  enable: true
+  # Port # for the service to run on.
+  port: 4000
 ```
 
 ## Usage ##
