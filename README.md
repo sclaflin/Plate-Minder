@@ -131,6 +131,7 @@ recorders:
     baseTopic: plate-minder
     # Optional - Home Assistant Auto Discovery support.
     hassDiscovery:
+      enable: true
       discoveryPrefix: homeassistant
     # Connection options can be found here: https://github.com/mqttjs/MQTT.js#client
     mqttOptions:
