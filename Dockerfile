@@ -43,6 +43,6 @@ COPY --chown=app:app migrations /app/migrations
 
 WORKDIR /app
 
-RUN npm ci
+RUN npm ci --production
 
 CMD ["/usr/bin/npm", "start"]
