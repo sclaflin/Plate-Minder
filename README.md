@@ -94,7 +94,9 @@ services:
       - 8080:80
 ```
 
-A complete `config.yaml`:
+At a minimum, just create an empty `config.yaml`. If you intend to use the web UI to configure Plate-Minder, sane defaults will be provided.
+
+If you would prefer to craft your own `config.yaml`, below is a complete example:
 
 ```yaml
 sources:
