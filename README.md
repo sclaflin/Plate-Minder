@@ -23,7 +23,7 @@ Short term goals:
  * ~~Use home assistant autodiscovery~~
  * ~~Storage of images where plates have been detected.~~
 	* ~~Customizable & tokenized file names.~~
- * Web UI for configuration
+ * ~~Web UI for configuration~~
    * ~~Add RESTful API to manage configuration~~
 
 
@@ -80,6 +80,18 @@ services:
     container_name: open-alpr-http-wrapper
     restart: unless-stopped
     image: sclaflin/open-alpr-http-wrapper:latest
+  plate-minder-web:
+    container_name: plate-minder-web
+    image: sclaflin/plate-minder-web:latest
+    restart: unless-stopped
+    # By default, Web UI looks for plate-minder's REST service at http://localhost:4000
+    # You can override this by mounting your own "plate-minder-url" file below.
+    # Contents of "plate-minder-url" must be the URL you want the Web UI to connect to.
+    # For example, "http://my-docker-host:4000"
+    # volumes:
+    #   - ./plate-minder-url:/usr/share/nginx/html/plate-minder-url
+    ports:
+      - 8080:80
 ```
 
 A complete `config.yaml`:
