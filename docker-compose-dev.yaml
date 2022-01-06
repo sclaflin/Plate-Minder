@@ -20,11 +20,11 @@ services:
     container_name: plate-minder-web
     image: sclaflin/plate-minder-web:latest
     restart: unless-stopped
-    # By default, Web UI looks for plate-minder's REST service at http://localhost:4000
-    # You can override this by mounting your own "plate-minder-url" file below.
-    # Contents of "plate-minder-url" must be the URL you want the Web UI to connect to.
-    # For example, "http://my-docker-host:4000"
-    # volumes:
+    # By default, Web UI looks for plate-minder's REST service at
+    # http://localhost:4000 You can override this by mounting your own
+    # "plate-minder-url" file below. Contents of "plate-minder-url" must be the
+    # URL you want the Web UI to connect to. For example,
+    # "http://my-docker-host:4000" volumes:
     #   - ./plate-minder-url:/usr/share/nginx/html/plate-minder-url
     ports:
       - 8081:80

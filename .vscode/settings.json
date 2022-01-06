@@ -1,6 +1,8 @@
 {
     "editor.insertSpaces": false,
     "editor.tabSize": 4,
+	"editor.rulers": [80],
+	"rewrap.wrappingColumn": 80,
     "editor.detectIndentation": false,
     "files.insertFinalNewline": true,
     "eslint.format.enable": true,

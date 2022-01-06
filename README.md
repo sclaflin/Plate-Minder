@@ -3,9 +3,9 @@
 [GitHub](https://github.com/sclaflin/Plate-Minder) | [Docker
 Hub](https://hub.docker.com/r/sclaflin/plate-minder)
 
-***Please note: This project is in a very early stage of development. The API is currently
-very unstable and not suitable for anyone that's not into tinkering as things
-evolve.***
+***Please note: This project is in a very early stage of development. The API is
+currently very unstable and not suitable for anyone that's not into tinkering as
+things evolve.***
 
 Monitor an MJPEG stream for license plates and record them.
 
@@ -60,7 +60,7 @@ captures detected license plate information.
 
 ## Installation ##
 
-Docker Compose:
+### Docker Compose: ###
 
 ```yaml
 version: "3.9"
@@ -80,23 +80,29 @@ services:
     container_name: open-alpr-http-wrapper
     restart: unless-stopped
     image: sclaflin/open-alpr-http-wrapper:latest
+  # This service is not required, but exists to help with configuration. Once 
+  # Plate-Minder has been configured, feel free to disable this service.
   plate-minder-web:
     container_name: plate-minder-web
     image: sclaflin/plate-minder-web:latest
     restart: unless-stopped
-    # By default, Web UI looks for plate-minder's REST service at http://localhost:4000
-    # You can override this by mounting your own "plate-minder-url" file below.
-    # Contents of "plate-minder-url" must be the URL you want the Web UI to connect to.
-    # For example, "http://my-docker-host:4000"
+    # By default, Web UI looks for plate-minder's REST service at 
+	# http://localhost:4000. You can override this by mounting your own "plate-
+	# minder-url" file below. Contents of "plate-minder-url" must be the URL you
+	# want the Web UI to connect to. For example, "http://my-docker-host:4000".
     # volumes:
     #   - ./plate-minder-url:/usr/share/nginx/html/plate-minder-url
     ports:
       - 8080:80
 ```
 
-At a minimum, just create an empty `config.yaml`. If you intend to use the web UI to configure Plate-Minder, sane defaults will be provided.
+### Configuration ###
 
-If you would prefer to craft your own `config.yaml`, below is a complete example:
+At a minimum, just create an empty `config.yaml`. Open your web browser and
+navigate to http://localhost:8080.
+
+If instead, you would prefer to craft your own `config.yaml`, below is a
+complete example:
 
 ```yaml
 sources:
@@ -105,7 +111,8 @@ sources:
     name: Northbound
     url: 'rtsp://rtsp://<your camera>'
     # How often an image should be captured. 
-    # Increments are in seconds. Fractional values (i.e. "0.5") can be used for sub-second capturing.
+    # Increments are in seconds. Fractional values (i.e. "0.5") can be used for
+    # sub-second capturing.
     captureInterval: 1
   # Have a video file you want to process?
   - type: file
@@ -147,14 +154,16 @@ recorders:
     hassDiscovery:
       enable: true
       discoveryPrefix: homeassistant
-    # Connection options can be found here: https://github.com/mqttjs/MQTT.js#client
+    # Connection options can be found here: 
+    # https://github.com/mqttjs/MQTT.js#client
     mqttOptions:
       username: username
       password: mypassword
   # Output files to a folder
   - type: file
     # Naming pattern of files to store.
-    # Tokens ({{DATE}}, {{TIME}}, {{SOURCE}}, and {{PLATE}}) are replaced with dynamic values
+    # Tokens ({{DATE}}, {{TIME}}, {{SOURCE}}, and {{PLATE}}) are replaced with
+    # dynamic values.
     pattern: './data/images/{{DATE}}/{{SOURCE}}/{{TIME}}_{{PLATE}}.jpeg'
     # Files older than retainDays will be removed.
     retainDays: 30
@@ -227,13 +236,14 @@ detection info:
   ]
 }
 ```
-`plate-minder/<source name>/plate` contains the most recently detected plate number.
-
-`plate-minder/<source name>/image` contains a JPEG image of the most recently detected plate
+`plate-minder/<source name>/plate` contains the most recently detected plate
 number.
 
-`plate-minder/<source name>/roi` contains a cropped JPEG image of the region of interest where
-the plate was detected.
+`plate-minder/<source name>/image` contains a JPEG image of the most recently
+detected plate number.
+
+`plate-minder/<source name>/roi` contains a cropped JPEG image of the region of
+interest where the plate was detected.
 
 ### File ###
 
@@ -261,8 +271,8 @@ images and their folders will be removed automatically.
 Assuming Plate-Minder is sending data to your MQTT broker, the following entites
 should be auto-discovered per video source:
 
-*Please note that entities will not appear until the first license plate has been
-detected.*
+*Please note that entities will not appear until the first license plate has
+been detected.*
 
 * `sensor.<Source Name>_plate`
 * `camera.<Source Name>_image`
