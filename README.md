@@ -60,7 +60,24 @@ captures detected license plate information.
 
 ## Installation ##
 
-### Docker Compose: ###
+**TL;DR:**
+
+0. Install docker & docker-compose
+1. [Download](/examples/basic-install.zip) and extract the bare-bones configuration.
+2. Within the 'plate-minder' folder, run
+   ```
+   docker-compose up -d
+   ```
+3. From the same computer, navigate to http://localhost:8080
+4. Enter your RTSP sources, filters, and recorders.
+5. Captured images & data will be placed in the `./data` folder.
+
+Read on if you'd like to configure it further.
+### docker-compose.yaml: ###
+
+Plate-Minder minimally consists of two services: plate-minder &
+open-alpr-http-wrapper. Optionally, a plate-minder-web service can be used to
+help with setting up plate-minder. Below is an example docker-compose.yaml.
 
 ```yaml
 version: "3.9"
@@ -87,22 +104,20 @@ services:
     image: sclaflin/plate-minder-web:latest
     restart: unless-stopped
     # By default, Web UI looks for plate-minder's REST service at 
-	# http://localhost:4000. You can override this by mounting your own "plate-
-	# minder-url" file below. Contents of "plate-minder-url" must be the URL you
-	# want the Web UI to connect to. For example, "http://my-docker-host:4000".
-    # volumes:
-    #   - ./plate-minder-url:/usr/share/nginx/html/plate-minder-url
+    # http://localhost:4000. You can override this by mounting your own "plate-
+    # minder-url" file below. Contents of "plate-minder-url" must be the URL you
+    # want the Web UI to connect to. For example, "http://my-docker-host:4000".
+    volumes:
+      - ./plate-minder-url:/usr/share/nginx/html/plate-minder-url
     ports:
       - 8080:80
 ```
 
-### Configuration ###
+### config.yaml ###
 
-At a minimum, just create an empty `config.yaml`. Open your web browser and
-navigate to http://localhost:8080.
-
-If instead, you would prefer to craft your own `config.yaml`, below is a
-complete example:
+Configuration of Plate-Minder itself is handled through config.yaml.  Minimally,
+this can be an empty if you intend to configure it via the plate-minder-web
+service. Below is a complete config.yaml example:
 
 ```yaml
 sources:
@@ -175,6 +190,17 @@ restService:
   enable: true
   # Port # for the service to run on.
   port: 4000
+```
+
+### plate-minder-url ###
+
+If you intend to access the web UI from a different computer than your docker
+host, enter a valid URL to reach the plate-minder RESTful service into this
+file.
+
+```
+http://localhost:4000
+
 ```
 
 ## Usage ##
