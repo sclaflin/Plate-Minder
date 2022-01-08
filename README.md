@@ -63,7 +63,8 @@ captures detected license plate information.
 **TL;DR:**
 
 0. Install docker & docker-compose
-1. [Download](/examples/basic-install.zip) and extract the bare-bones configuration.
+1. [Download](https://github.com/sclaflin/Plate-Minder/blob/master/examples/basic-install.zip)
+   and extract the bare-bones configuration.
 2. Within the 'plate-minder' folder, run
    ```
    docker-compose up -d
@@ -103,12 +104,11 @@ services:
     container_name: plate-minder-web
     image: sclaflin/plate-minder-web:latest
     restart: unless-stopped
-    # By default, Web UI looks for plate-minder's REST service at 
-    # http://localhost:4000. You can override this by mounting your own "plate-
-    # minder-url" file below. Contents of "plate-minder-url" must be the URL you
-    # want the Web UI to connect to. For example, "http://my-docker-host:4000".
-    volumes:
-      - ./plate-minder-url:/usr/share/nginx/html/plate-minder-url
+    # By default, Web UI looks for plate-minder's REST service at
+    # http://localhost:4000. You can override this by setting a PLATE_MINDER_URL
+    # environment variable
+    environment:
+      - PLATE_MINDER_URL=http://localhost:4000
     ports:
       - 8080:80
 ```
