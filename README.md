@@ -192,17 +192,6 @@ restService:
   port: 4000
 ```
 
-### plate-minder-url ###
-
-If you intend to access the web UI from a different computer than your docker
-host, enter a valid URL to reach the plate-minder RESTful service into this
-file.
-
-```
-http://localhost:4000
-
-```
-
 ## Usage ##
 
 ### SQLite ###
