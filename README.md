@@ -124,7 +124,7 @@ sources:
   # Have an RTSP stream?
   - type: rtsp
     name: Northbound
-    url: 'rtsp://rtsp://<your camera>'
+    url: 'rtsp://<your camera>'
     # How often an image should be captured. 
     # Increments are in seconds. Fractional values (i.e. "0.5") can be used for
     # sub-second capturing.
