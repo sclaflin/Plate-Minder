@@ -104,9 +104,10 @@ services:
     container_name: plate-minder-web
     image: sclaflin/plate-minder-web:latest
     restart: unless-stopped
-    # By default, Web UI looks for plate-minder's REST service at
-    # http://localhost:4000. You can override this by setting a PLATE_MINDER_URL
-    # environment variable
+    # The default configuration assumes docker is running on the same machine 
+    # you're viewing the web UI with. If you're accessing the service from a
+    # different computer, you should set the PLATE_MINDER_URL to whatever host 
+    # & port Plate-Minder's RESTful service is accessible from.
     environment:
       - PLATE_MINDER_URL=http://localhost:4000
     ports:
