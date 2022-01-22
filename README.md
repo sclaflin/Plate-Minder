@@ -60,9 +60,12 @@ captures detected license plate information.
 
 ## Installation ##
 
-**TL;DR:**
+**Getting Started**
 
-0. Install docker & docker-compose
+The following steps assume you're installing & configuring Plate-Minder all on
+the same machine.
+
+0. Install [docker](https://docs.docker.com/engine/install/) & [docker-compose](https://docs.docker.com/compose/install/)
 1. [Download](https://github.com/sclaflin/Plate-Minder/blob/master/examples/basic-install.zip)
    and extract the bare-bones configuration.
 2. Within the 'plate-minder' folder, run
@@ -117,7 +120,7 @@ services:
 ### config.yaml ###
 
 Configuration of Plate-Minder itself is handled through config.yaml.  Minimally,
-this can be an empty if you intend to configure it via the plate-minder-web
+this can be an empty file if you intend to configure it via the plate-minder-web
 service. Below is a complete config.yaml example:
 
 ```yaml
@@ -136,7 +139,7 @@ sources:
     file: ./<path to your video file>
     captureInterval: 1
 
-# Globall applied filters
+# Globally applied filters
 # Filter jpeg frames. Currently 'motion' and 'mask' filters are available.
 # Filters are processed in the order they are defined
 filters:
@@ -297,6 +300,24 @@ been detected.*
 Picture entity card & entities card examples:
 
 ![Home Assistant Example](/images/home_assistant.png)
+
+
+## Common Problems ##
+
+> The web UI is just an empty page.
+
+Plate Minder's web UI is written against the latest versions of web-browsers.
+Please update your browser and try again.
+
+> The web UI loads, but there's an error dialog that says "Failed to fetch".
+
+The most likely reasons are:
+
+  * You are trying to view the web UI from a different computer and didn't update
+  the `PLATE_MINDER_URL` environment variable in your docker-compose.yaml file.
+  * The plate-minder service isn't running.
+  * Your feet stink.
+  * Two of these reasons are inappropriate.
 
 ## Thanks ##
 
