@@ -326,7 +326,7 @@ shoulders of giants.
 
 * [Docker](https://www.docker.com/)
 * [FFMPEG](https://ffmpeg.org/)
-* [ffmpeg-static](https://github.com/eugeneware/ffmpeg-static)
+* [jellyfin-ffmpeg](https://github.com/jellyfin/jellyfin-ffmpeg)
 * [Git](https://git-scm.com/)
 * [MQTT.js](https://github.com/mqttjs)
 * [node.js](https://nodejs.org)
