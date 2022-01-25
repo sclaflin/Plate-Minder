@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM debian:bullseye-slim
 
 LABEL description="Connects an RTSP feed to OpenALPR and records captured data"
 LABEL maintainer "seanclaflin@protonmail.com"
@@ -13,7 +13,7 @@ RUN apt update \
         wget \
         gpg \
         apt-transport-https \
-        sqlite \
+        sqlite3 \
         lsb-release \
     && rm -rf /var/lib/apt/lists/*
 
