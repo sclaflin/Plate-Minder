@@ -342,9 +342,7 @@ Picture entity card & entities card examples:
         ...
 	    # FFMPEG arguments to apply before the input argument. This can be used for
 	    # several things. In this example, we are leveraging Intel's QuickSync for
-	    # hardware decoding of an h264 stream. Please note that in order for this
-	    # example to work, you've got a few more steps. Please see the Hardware 
-	    # Acceleration section further down.
+	    # hardware decoding of an h264 stream.
         preInputArgs:
           - -hwaccel
           - qsv
@@ -352,9 +350,7 @@ Picture entity card & entities card examples:
           - h264_qsv
 	    # FFMPEG arguments to apply before the output argument. This can be used for
 	    # several things. In this example, we are leveraging Intel's Quicksync for
-	    # hardware encoding of the MJPEG stream. Please note that in order for this
-	    # example to work, you've got a few more steps. Please see the Hardware 
-	    # Acceleration section further down.
+	    # hardware encoding of the MJPEG stream.
         preOutputArgs:
           - -c:v
           - mjpeg_qsv
