@@ -301,7 +301,72 @@ Picture entity card & entities card examples:
 
 ![Home Assistant Example](/images/home_assistant.png)
 
+## Hardware Acceleration ##
 
+### Intel Quicksync ###
+
+1. Add the `/dev/dri/renderD128` device to your `docker-compose.yaml` file.
+    ```yaml
+    plate-minder:
+      ...
+	  devices:
+        # For Intel related hardware acceleration
+        - /dev/dri/renderD128
+    ```
+2. Determine the group that `/dev/dri/renderD128` belongs to:
+    ```bash
+    $ ls -l /dev/dri/renderD128 
+    crw-rw----+ 1 root render 226, 128 Jan 24 23:03 /dev/dri/renderD128
+    ```
+   In the above case, the device belongs to the "render" group.
+3. Get the group id:
+    ```bash
+    $ getent group render 
+    render:x:107:
+    ```
+   In the above case, the group id is "107".
+4. Set the group id that the docker container user will run as.
+    ```yaml
+    plate-minder:
+      ...
+	  # For Intel related hardware acceleration, the container needs the same
+      # group id as /dev/dri/renderD128.
+	  user: 1000:107
+    ```
+5. Set `preInputArgs` and `preOutputArgs` for each video source you have set in
+   your `config.yaml`:
+    ```yaml
+    sources:
+      ...
+      - type: rtsp
+        ...
+	    # FFMPEG arguments to apply before the input argument. This can be used for
+	    # several things. In this example, we are leveraging Intel's QuickSync for
+	    # hardware decoding of an h264 stream. Please note that in order for this
+	    # example to work, you've got a few more steps. Please see the Hardware 
+	    # Acceleration section further down.
+        preInputArgs:
+          - -hwaccel
+          - qsv
+          - -c:v
+          - h264_qsv
+	    # FFMPEG arguments to apply before the output argument. This can be used for
+	    # several things. In this example, we are leveraging Intel's Quicksync for
+	    # hardware encoding of the MJPEG stream. Please note that in order for this
+	    # example to work, you've got a few more steps. Please see the Hardware 
+	    # Acceleration section further down.
+        preOutputArgs:
+          - -c:v
+          - mjpeg_qsv
+    ```
+
+### Nvidia NVENC ###
+
+TODO: Find a kind soul with the appropriate hardware willing to work this out.
+
+### AMD ###
+
+TODO: Find a kind soul with the appropriate hardware willing to work this out.
 ## Common Problems ##
 
 > The web UI is just an empty page.
