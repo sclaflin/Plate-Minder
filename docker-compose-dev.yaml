@@ -12,6 +12,12 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./data:/app/data
       - ./config.yaml:/app/config.yaml
+    # For Intel related hardware acceleration, the container needs the same
+    # group id as /dev/dri/renderD128.
+    user: 1000:107
+    devices:
+      # For Intel related hardware acceleration
+      - /dev/dri/renderD128
   open-alpr-http-wrapper:
     container_name: open-alpr-http-wrapper
     restart: unless-stopped
