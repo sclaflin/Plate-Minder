@@ -78,37 +78,6 @@ the same machine.
 
 Read on if you'd like to configure it further.
 
-### No docker-compose? Here's some docker commands. ###
-
-I can't pretend to know the specifics of your container host or how you intend
-to run things. The below commands provide the bare-minimum required to get
-plate-minder up and running. At a minimum, you're likely going to want some type
-of watch dog to keep the services running.
-
-Given:
-
-* Your docker host ip address is `192.168.0.1`
-* Your data folder is located at `/plate-minder/data`
-* Your config.yaml file is located at `/plate-minder/config.yaml`
-
-```bash
-# Open ALPR HTTP Wrapper
-docker run -d -p 3000:3000 --name open-alpr-http-wrapper sclaflin/open-alpr-http-wrapper:latest
-```
-
-```bash
-# Plate-Minder
-docker run -d -p 4000:4000 --name plate-minder -v /plate-minder/data:/app/data -v /plate-minder/config.yaml:/app/config.yaml sclaflin/plate-minder:latest
-```
-
-```bash
-# Plate-Minder Web (optional)
-PLATE_MINDER_URL=http://192.168.0.1:4000 docker run -d -p 8080:80 --name plate-minder-web sclaflin/plate-minder-web:latest
-```
-
-With the above settings, you should be able to view the web ui and configure
-plate-minder at `http://192.168.0.1:8080`.
-
 ### docker-compose.yaml: ###
 
 Plate-Minder minimally consists of two services: plate-minder &
@@ -148,6 +117,37 @@ services:
     ports:
       - 8080:80
 ```
+
+### No docker-compose? Here's some docker commands. ###
+
+I can't pretend to know the specifics of your container host or how you intend
+to run things. The below commands provide the bare-minimum required to get
+plate-minder up and running. At a minimum, you're likely going to want some type
+of watch dog to keep the services running.
+
+Given:
+
+* Your docker host ip address is `192.168.0.1`
+* Your data folder is located at `/plate-minder/data`
+* Your config.yaml file is located at `/plate-minder/config.yaml`
+
+```bash
+# Open ALPR HTTP Wrapper
+docker run -d -p 3000:3000 --name open-alpr-http-wrapper sclaflin/open-alpr-http-wrapper:latest
+```
+
+```bash
+# Plate-Minder
+docker run -d -p 4000:4000 --name plate-minder -v /plate-minder/data:/app/data -v /plate-minder/config.yaml:/app/config.yaml sclaflin/plate-minder:latest
+```
+
+```bash
+# Plate-Minder Web (optional)
+PLATE_MINDER_URL=http://192.168.0.1:4000 docker run -d -p 8080:80 --name plate-minder-web sclaflin/plate-minder-web:latest
+```
+
+With the above settings, you should be able to view the web ui and configure
+plate-minder at `http://192.168.0.1:8080`.
 
 ### config.yaml ###
 
