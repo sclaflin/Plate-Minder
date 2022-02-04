@@ -397,6 +397,23 @@ TODO: Find a kind soul with the appropriate hardware willing to work this out.
 TODO: Find a kind soul with the appropriate hardware willing to work this out.
 ## Common Problems ##
 
+> The plate-minder container keeps crashing. What do?
+
+The plate-minder process runs internally as uid 1000 and **not as root**. This
+is for your security. This is also usually why things are going poorly.
+
+Any volumes you mount in the container that plate-minder writes to need to be
+writable by uid 1000.  The best way to do this is to set uid 1000 as the owner
+of those volumes.
+
+For example, if you want to mount `/path/to/plate-minder/data`, you need to
+first make sure that the path actually exists. Next you need to make sure it's
+owned by uid 1000:
+
+```bash
+chown 1000 /path/to/plate-minder/data
+```
+
 > The web UI is just an empty page.
 
 Plate Minder's web UI is written against the latest versions of web-browsers.
