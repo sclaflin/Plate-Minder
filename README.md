@@ -42,6 +42,7 @@ OpenALPRDetect --> PlateRecorder
 
 `MJPEGReadable` converts a video source to MJPEG. 
 - `RTSPMJPEGReadable` converts an RTSP stream into an MJPEG stream.
+- `MJPEGMJPEGReadable` passthrough for an MJPEG stream.
 - `FileMJPEGReadable` converts a video file from disk into an MJPEG stream.
 
 `MJPEGToJPEG` extracts JPEG images from an MJPEG stream.
@@ -165,6 +166,10 @@ sources:
     # Increments are in seconds. Fractional values (i.e. "0.5") can be used for
     # sub-second capturing.
     captureInterval: 1
+  # Have an MJPEG stream?
+  - type: mjpeg
+    name: Garage
+    url: 'rtsp://<your camera>'
   # Have a video file you want to process?
   - type: file
     name: Southbound
