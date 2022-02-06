@@ -8,6 +8,9 @@ import { DEFAULT_CONFIG } from './lib/constants.js';
 		(await fs.readFile('config.yaml')).toString()
 	) || DEFAULT_CONFIG;
 
+	//do some cursory checks and complain
+	await PlateMinder.checkEnvironment();
+
 	PlateMinder.fromObject(config);
 })();
 
