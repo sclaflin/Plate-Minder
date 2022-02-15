@@ -166,15 +166,22 @@ sources:
     # Increments are in seconds. Fractional values (i.e. "0.5") can be used for
     # sub-second capturing.
     captureInterval: 1
+    # By default, plate-minder will restart a source if it ends with an error 
+    # code. Setting alwaysRestart to true will restart a source whether it ends
+    # with an error code or not.
+    alwaysRestart: false
   # Have an MJPEG stream?
   - type: mjpeg
     name: Garage
     url: 'rtsp://<your camera>'
+    captureInterval: 1
+    alwaysRestart: false
   # Have a video file you want to process?
   - type: file
     name: Southbound
     file: ./<path to your video file>
     captureInterval: 1
+    alwaysRestart: false
 
 # Globally applied filters
 # Filter jpeg frames. Currently 'motion' and 'mask' filters are available.
