@@ -471,6 +471,26 @@ The most likely reasons are:
   * Your feet stink.
   * Two of these reasons are inappropriate.
 
+> RTSP Stream is not loading
+
+  * Add a Motion Filter, and Set Debug to True. If it shows a broken image icon. Proceed below.
+  * Test the stream in the container on ffmpeg
+  * under `/app` run the following command to test the stream
+  * ```/usr/lib/jellyfin-ffmpeg/ffmpeg -hide_banner -loglevel debug -i "rtsp://username:password@ipaddress:554/live" -f mjpeg -r 1/1 -an out.mjpeg```
+  * If it does not work as a continuous stream of output. Try adding the following '-rtsp_transport tcp' to the command
+  *  ```/usr/lib/jellyfin-ffmpeg/ffmpeg -hide_banner -loglevel debug -rtsp_transport tcp -i "rtsp://username:password@ipaddress:554/live" -f mjpeg -r 1/1 -an out.mjpeg```
+  *  If the above works, ammend your preInputArgs
+  *  ```
+	  - type: rtsp
+	    ...
+    	    preInputArgs:
+      	      - -rtsp_transport
+      	      - tcp
+	    ...
+    	    url: rtsp://username:password@ipaddress:554/live
+     ```
+
+
 ## Thanks ##
 
 This project has been a pleasure to develop due largely to standing on the
