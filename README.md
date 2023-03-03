@@ -203,6 +203,8 @@ filters:
 openALPR:
   # Path to ALPRToHTTP server
   url: http://open-alpr-http-wrapper:3000/detect
+  # OpenALPR supports "eu" and "us"
+  country_code: 'us'
 
 # Record detected license plate information
 recorders:
