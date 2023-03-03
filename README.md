@@ -203,7 +203,21 @@ filters:
 openALPR:
   # Path to ALPRToHTTP server
   url: http://open-alpr-http-wrapper:3000/detect
-  # OpenALPR supports "eu" and "us"
+  # OpenALPR supports the following country codes:
+  #   "au" => Australia
+  #   "auwide" => Australia Wide
+  #   "br" => Brazil
+  #   "br2" => Brazil Two Line
+  #   "eu" => Europe
+  #   "fr" => France
+  #   "gb" => United Kingdom
+  #   "in" => India
+  #   "kr" => South Korea
+  #   "kr2" => South Korea Two Line
+  #   "mx" => Mexico
+  #   "sg" => Singapore
+  #   "us" => United States
+  #   "vn2" => Vietnam Two Line
   country_code: 'us'
 
 # Record detected license plate information
