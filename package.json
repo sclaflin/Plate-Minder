@@ -1,6 +1,6 @@
 {
   "name": "plate-minder",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Processes an RTSP stream for license plates and stores them.",
   "main": "index.js",
   "type": "module",
