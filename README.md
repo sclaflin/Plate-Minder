@@ -219,6 +219,11 @@ openALPR:
   #   "us" => United States
   #   "vn2" => Vietnam Two Line
   country_code: 'us'
+  # Attempts to match the plate number against a plate pattern
+  # (e.g. md for Maryland, ca for California)
+  # OpenALPR supports the following pattern codes based on the selected country
+  # See: https://github.com/openalpr/openalpr/tree/master/runtime_data/postprocess
+  pattern: 'ca' # optional
 
 # Record detected license plate information
 recorders:
