@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "buildImage": "docker build -t 'sclaflin/plate-minder' .",
+    "buildImage": "docker build -t sclaflin/plate-minder:`npm pkg get version | sed 's/\"//g'` .",
     "start": "node index.js",
     "lint": "eslint ./lib"
   },
