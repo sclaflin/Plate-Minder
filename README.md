@@ -234,6 +234,10 @@ recorders:
     url: <URL to your MQTT instance>
     # Optional - Default base topic is 'plate-minder'
     baseTopic: plate-minder
+    # Optional - Default is true. Enables sending image to MQTT topic
+    # Disabling the image can speed up requests
+    # Cannot be disabled when hassDiscovery is enabled for specified topic
+    enableImage: true
     # Optional - Home Assistant Auto Discovery support.
     hassDiscovery:
       enable: true
