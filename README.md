@@ -94,9 +94,12 @@ services:
     image: sclaflin/plate-minder:latest
     ports:
       - 4000:4000
+    environment:
+    # Set an environment variable for the container timezone.
+    # See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+      - TZ=America/Chicago
     volumes:
       # Set's the docker container to the host container local time
-      - /etc/localtime:/etc/localtime:ro
       - ./data:/app/data
       - ./config.yaml:/app/config.yaml
   open-alpr-http-wrapper:
