@@ -27,7 +27,10 @@
 		"bierner.markdown-mermaid",
 		"dbaeumer.vscode-eslint",
 		"stkb.rewrap"
-	]
+	],
+	"containerEnv": {
+		"TZ": "America/Chicago"
+	}
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
