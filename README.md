@@ -332,6 +332,9 @@ detected plate number.
 `plate-minder/<source name>/roi` contains a cropped JPEG image of the region of
 interest where the plate was detected.
 
+`plate-minder/<source name>/timestamp` contains the epoch timestamp (includes
+milliseconds) of the plate detection.
+
 ### File ###
 
 Enabling the file recorder will store images with a plate detected to disk. A
@@ -361,9 +364,12 @@ should be auto-discovered per video source:
 *Please note that entities will not appear until the first license plate has
 been detected.*
 
-* `sensor.<Source Name>_plate`
-* `camera.<Source Name>_image`
-* `camera.<Source Name>_roi`
+* `sensor.<Source_Name>_plate`
+* `camera.<Source_Name>_image`
+* `camera.<Source_Name>_roi`
+* `sensor.<Source_Name>_timestamp`
+* `image.<Source_Name>_image`
+* `image.<Source_Name>_roi`
 
 Picture entity card & entities card examples:
 
