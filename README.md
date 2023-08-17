@@ -473,23 +473,23 @@ The most likely reasons are:
 
 > RTSP Stream is not loading
 
-  * Add a Motion Filter, and Set Debug to True. If it shows a broken image icon. Proceed below.
-  * Test the stream in the container on ffmpeg
-  * under `/app` run the following command to test the stream
-  * ```/usr/lib/jellyfin-ffmpeg/ffmpeg -hide_banner -loglevel debug -i "rtsp://username:password@ipaddress:554/live" -f mjpeg -r 1/1 -an out.mjpeg```
-  * If it does not work as a continuous stream of output. Try adding the following '-rtsp_transport tcp' to the command
-  *  ```/usr/lib/jellyfin-ffmpeg/ffmpeg -hide_banner -loglevel debug -rtsp_transport tcp -i "rtsp://username:password@ipaddress:554/live" -f mjpeg -r 1/1 -an out.mjpeg```
-  *  If the above works, ammend your preInputArgs
-  *  ```
-	  - type: rtsp
-	    ...
-    	    preInputArgs:
-      	      - -rtsp_transport
-      	      - tcp
-	    ...
-    	    url: rtsp://username:password@ipaddress:554/live
-     ```
+If you're certain you've got the camera configured correctly, give this a shot.
+Some users have reported issues with getting an RTSP stream working. For them,
+forcing FFMPEG to use TCP solves their issue.
 
+Add the following `preInputArgs` to the camera source:
+```yaml
+sources:
+	...
+    - type: rtsp
+    ...
+    # FFMPEG arguments to apply before the input argument. This can be used
+    # for several things. In this example, we are forcing ffmpeg to use tcp
+    # on the camera's RTSP stream.
+    preInputArgs:
+        - -rtsp_transport
+        - tcp
+```
 
 ## Thanks ##
 
