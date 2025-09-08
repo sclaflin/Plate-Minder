@@ -221,7 +221,7 @@ openALPR:
   #   "sg" => Singapore
   #   "us" => United States
   #   "vn2" => Vietnam Two Line
-  country_code: 'us'
+  countryCode: 'us'
   # Attempts to match the plate number against a plate pattern
   # (e.g. md for Maryland, ca for California)
   # OpenALPR supports the following pattern codes based on the selected country
